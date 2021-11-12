@@ -14,3 +14,23 @@ class Car:
         self.transmission = transmission
         self.speed = speed
         self.gear = gear
+        
+    def getSpeed(self):
+        return self.speed
+    
+    def getGear(self):
+        return self.gear
+    
+    def getTransmission(self):
+        return self.transmission
+    
+    def increaseSpeedBy(self, value):
+        self.speed += value
+        if self.speed > self.maxSpeed:
+            self.speed = self.maxSpeed
+            
+    def gearUp(self):
+        pass
+    
+    def maxSpeedForCurrentGear(self):
+        pass
