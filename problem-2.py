@@ -30,7 +30,9 @@ class Car:
             self.speed = self.maxSpeed
             
     def gearUp(self):
+        # details about this function is not relavent hence this function has been implemented as `pass`
         pass
     
     def maxSpeedForCurrentGear(self):
+        # details about this function is not relavent hence this function has been implemented as `pass`
         pass
