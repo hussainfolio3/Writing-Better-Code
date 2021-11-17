@@ -7,35 +7,6 @@ class Product:
         self.category = category
         self.price = price
     
-    @property
-    def price(self):
-        return self.price
-    
-    @price.setter
-    def price(self, price):
-        self.price = price
-        
-    @property
-    def category(self):
-        return self.category
-    
-    @category.setter
-    def category(self, category):
-        self.category = category
-        
-    @property
-    def name(self):
-        return self.name
-    
-    @name.setter
-    def name(self, name):
-        self.name = name
-        
-    @property
-    def product_id(self):
-        return self.product_id
-    
-    
 
 class ProductFormatter:
     def format(self, product, format_as):
@@ -50,5 +21,5 @@ class ProductFormatter:
 if __name__ == "__main__":
     product = Product("Pepsi","Food", "50")
     formatter = ProductFormatter()
-    print(formatter.format(product,"csv"))
+    print(formatter.format(product,"text"))
     

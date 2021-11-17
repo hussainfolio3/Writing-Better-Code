@@ -2,7 +2,7 @@
 def accelerate(car):
     if car.transmission == "Automatic":
         car.increase_speed_by(5)
-        if car.speed > car.max_speed_for_current_gear:
+        if car.speed > car.max_speed_for_current_gear():
             car.gear_up()
     elif car.transmission() == "Manual":
         car.increase_speed_by(10)
@@ -14,18 +14,6 @@ class Car:
         self.transmission = transmission
         self.speed = speed
         self.gear = gear
-    
-    @property    
-    def speed(self):
-        return self.speed
-    
-    @property
-    def gear(self):
-        return self.gear
-    
-    @property
-    def transmission(self):
-        return self.transmission
     
     def increase_speed_by(self, value):
         self.speed += value
