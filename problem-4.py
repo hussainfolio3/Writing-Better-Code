@@ -23,3 +23,9 @@ def describe_person(person_obj: Person):
         
         if (person_obj.age > 50 and person_obj.age <= 80) and (person_obj.ethnicity == Ethnicity.AMERICAN or person_obj.ethnicity == Ethnicity.AFRICAN):
             print("You are a slightly old person and belong to either Africa or America.")
+            
+            
+if __name__ == "__main__":
+    feature_flag_enabled = True
+    person = Person()
+    describe_person(person)

@@ -1,39 +1,52 @@
-class Monitor:
-    def __init__(self, name, limit, alarm):
-        self.value = 0
-        self.limit = limit
-        self.isTooHigh = False
-        self.name = name
-        self.alarm = alarm
-
-    def getValue(self):
-        return self.value
-
-    def setValue(self, arg):
-        self.value = arg
-
-    def getLimit(self):
-        return self.limit
-
-    def getName(self):
-        return self.name
-
-    def getAlarm(self):
-        return self.alarm
-    
-    
 class Alarm:
     def warn(self, message):
         print(message)
+    
+
+class Monitor:
+    def __init__(self, value, limit, name, alarm):
+        self.value = value
+        self.limit = limit
+        self.name = name
+        self.alarm = alarm
+    
+    @property
+    def value(self):
+        return self.value
+    
+    @value.setter
+    def value(self, value):
+        self.value = value
         
+    @property
+    def limit(self):
+        return self.limit
+    
+    @limit.setter
+    def limit(self, limit):
+        self.limit = limit
         
-def main():
-    alarm = Alarm()
-    monitor = Monitor("Time Vortex Hocus", 2, alarm)
-    monitor.setValue(3)
-    if (monitor.getValue() > monitor.getLimit()):
-        monitor.getAlarm().warn(monitor.getName() + " too high")
+    @property
+    def name(self):
+        return self.name
+    
+    @name.setter
+    def name(self, name):
+        self.name = name
         
-        
+    @property
+    def alarm(self):
+        return self.alarm
+    
+    @alarm.setter
+    def alarm(self, alarm):
+        self.alarm = alarm
+            
+
 if __name__ == "__main__":
-    main()
+    alarm = Alarm()
+    monitor = Monitor("Time Vortex Hocus", 2, "Monitor", alarm)
+    monitor.value = 3
+    if (monitor.value > monitor.limit):
+        monitor.alarm.warn(monitor.name + " too high")
+        

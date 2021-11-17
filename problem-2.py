@@ -1,38 +1,41 @@
 
 def accelerate(car):
-    if car.getTransmission() == "Automatic":
-        car.increaseSpeedBy(5)
-        if car.getSpeed() > car.maxSpeedForCurrentGear():
-            car.gearUp()
-    elif car.getTransmission() == "Manual":
-        car.increaseSpeedBy(10)
+    if car.transmission == "Automatic":
+        car.increase_speed_by(5)
+        if car.speed > car.max_speed_for_current_gear:
+            car.gear_up()
+    elif car.transmission() == "Manual":
+        car.increase_speed_by(10)
 
 
 class Car:
-    def __init__(self, maxSpeed, transmission, speed=0, gear=1):
-        self.maxSpeed = maxSpeed
+    def __init__(self, max_speed, transmission, speed=0, gear=1):
+        self.max_speed = max_speed
         self.transmission = transmission
         self.speed = speed
         self.gear = gear
-        
-    def getSpeed(self):
+    
+    @property    
+    def speed(self):
         return self.speed
     
-    def getGear(self):
+    @property
+    def gear(self):
         return self.gear
     
-    def getTransmission(self):
+    @property
+    def transmission(self):
         return self.transmission
     
-    def increaseSpeedBy(self, value):
+    def increase_speed_by(self, value):
         self.speed += value
-        if self.speed > self.maxSpeed:
-            self.speed = self.maxSpeed
+        if self.speed > self.max_speed:
+            self.speed = self.max_speed
             
-    def gearUp(self):
+    def gear_up(self):
         # details about this function is not relavent hence this function has been implemented as `pass`
         pass
     
-    def maxSpeedForCurrentGear(self):
+    def max_speed_for_current_gear(self):
         # details about this function is not relavent hence this function has been implemented as `pass`
         pass

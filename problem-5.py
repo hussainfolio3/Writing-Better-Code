@@ -2,47 +2,53 @@ import uuid
 
 class Product:
     def __init__(self, name, category, price):
-        self.productId = str(uuid.uuid4())
+        self.product_id = str(uuid.uuid4())
         self.name = name
         self.category = category
         self.price = price
     
-    def getPrice(self):
+    @property
+    def price(self):
         return self.price
     
-    def setPrice(self, price):
+    @price.setter
+    def price(self, price):
         self.price = price
         
-    def getCategory(self):
+    @property
+    def category(self):
         return self.category
     
-    def setCategory(self, category):
+    @category.setter
+    def category(self, category):
         self.category = category
         
-    def getName(self):
+    @property
+    def name(self):
         return self.name
     
-    def setName(self, name):
+    @name.setter
+    def name(self, name):
         self.name = name
         
-    def getProductId(self):
-        return self.productId
+    @property
+    def product_id(self):
+        return self.product_id
     
     
 
 class ProductFormatter:
-    def format(self, product, formatAs):
-        if formatAs == "text":
-            return "Id: {},\nName: {},\nCategory: {},\nPrice: {}".format(product.getProductId(),product.getName(),product.getCategory(),product.getPrice())
-        elif formatAs == "csv":
-            return "{},{},{},{}".format(product.getProductId(),product.getName(),product.getCategory(),product.getPrice())
+    def format(self, product, format_as):
+        if format_as == "text":
+            return "Id: {},\nName: {},\nCategory: {},\nPrice: {}".format(product.product_id,product.name,product.category,product.price)
+        elif format_as == "csv":
+            return "{},{},{},{}".format(product.product_id,product.name,product.category,product.price)
         return "Invalid Format"
     
+
     
-def main():
+if __name__ == "__main__":
     product = Product("Pepsi","Food", "50")
     formatter = ProductFormatter()
     print(formatter.format(product,"csv"))
     
-if __name__ == "__main__":
-    main()

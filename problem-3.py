@@ -1,14 +1,20 @@
-
 class AlertStateContext:
     def __init__(self):
-        self.currentState = "Vibration"
-    def setState(self, state):
-        self.currentState = state
+        self.current_state = "Vibration"
+        
+    @property
+    def state(self):
+        return self.current_state
+    
+    @state.setter
+    def state(self, state):
+        self.current_state = state
+    
     def alert(self):
-        if self.currentState == "Vibration":
+        if self.current_state == "Vibration":
             print("Vibrating...")
-        elif self.currentState == "Silent":
+        elif self.current_state == "Silent":
             print("Silent...")
-        elif self.currentState == "Loud":
+        elif self.current_state == "Loud":
             print("Loud...")
     
