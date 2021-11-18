@@ -1,26 +1,25 @@
-from enum import Enum
+import uuid
 
-class Gender(Enum):
-    MALE="MALE"
-    FEMALE="FEMALE"
+class Product:
+    def __init__(self, name, category, price):
+        self.product_id = str(uuid.uuid4())
+        self.name = name
+        self.category = category
+        self.price = price
+    
 
-class Ethnicity(Enum):
-    ASIAN="ASIAN"
-    AMERICAN="AMERICAN"
-    AFRICAN="AFRICAN"
+class ProductFormatter:
+    def format(self, product, format_as):
+        if format_as == "text":
+            return "Id: {},\nName: {},\nCategory: {},\nPrice: {}".format(product.product_id,product.name,product.category,product.price)
+        elif format_as == "csv":
+            return "{},{},{},{}".format(product.product_id,product.name,product.category,product.price)
+        return "Invalid Format"
+    
 
-@dataclass
-class Person:
-    gender: Gender
-    age: int
-    ethnicity: Ethnicity
-
-def describe_person(person_obj: Person):
-    if feature_flag_enabled:
-        if person_obj.gender == Gender.MALE:
-            if person_obj.age > 80:
-                print("You are a very old male")
-        
-        if (person_obj.age > 50 and person_obj.age <= 80) and (person_obj.ethnicity == Ethnicity.AMERICAN or person_obj.ethnicity == Ethnicity.AFRICAN):
-            print("You are a slightly old person and belong to either Africa or America.")
-            
+    
+if __name__ == "__main__":
+    product = Product("Pepsi","Food", "50")
+    formatter = ProductFormatter()
+    print(formatter.format(product,"text"))
+    
